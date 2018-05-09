@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ColorNums</title>
+
+</head>
+<body>
+
+<div id="myDiv"></div>
+<script>
+        let result = '';
+        result += '<ul>\n';
+        for (let i = 1; i <= 10; i++)
+        {
+            let color = i % 2 == 0 ? 'blue' : 'green';
+            result += ` <li><span style='color:${color}'>${i}</span></li>\n`
+        }
+        result +='</ul>';
+        document.getElementById("myDiv").innerHTML = result;
+</script>
+
