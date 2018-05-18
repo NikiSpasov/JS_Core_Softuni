@@ -304,17 +304,17 @@ function lowestPriceInCities(input) {
     }
 }
 
-lowestPriceInCities(["Sofia City | Audi | 100000",
-    "Sofia City | BMW | 100000",
-    "Sofia City | Mitsubishi | 10000",
-    "Sofia City | Mercedes | 10000",
-    "Sofia City | NoOffenseToCarLovers | 0",
-    "Mexico City | Audi | 1000",
-    "Mexico City | BMW | 99999",
-    "New York City | Mitsubishi | 10000",
-    "New York City | Mitsubishi | 1000",
-    "Mexico City | Audi | 100000",
-    "Washington City | Mercedes | 1000"]);
+// lowestPriceInCities(["Sofia City | Audi | 100000",
+//     "Sofia City | BMW | 100000",
+//     "Sofia City | Mitsubishi | 10000",
+//     "Sofia City | Mercedes | 10000",
+//     "Sofia City | NoOffenseToCarLovers | 0",
+//     "Mexico City | Audi | 1000",
+//     "Mexico City | BMW | 99999",
+//     "New York City | Mitsubishi | 10000",
+//     "New York City | Mitsubishi | 1000",
+//     "Mexico City | Audi | 100000",
+//     "Washington City | Mercedes | 1000"]);
 
 
 //10. Extract Unique Words
@@ -358,3 +358,56 @@ function extractUniqueWord(arrOfStr) {
 //             .sort((k1, k2) =>{
 //                 return testMap.get(k1) - testMap.get(k2)})
 //             .forEach(k => console.log(k + " -> " + [...testMap.get(k)]));
+function uniqueSequence (arrs) {
+    let myMap = new Map();
+    arrs.map(a => JSON.stringify(a));
+    for (let arr of arrs) {
+        let arrLength = arr.length;
+        arr.sort((a, b) => b - a);
+        
+        myMap.set(arrLength, new Set(arr));
+    }
+    Array.from(myMap.keys())
+        .sort((a,b) => a-b)
+        .forEach( k =>
+        console.log(Array.from(myMap.get(k)))
+    );
+}
+// uniqueSequence([[-3, -2, -1, 0, 1, 2, 3, 4],
+//                [10, 1, -17, 0, 2, 13],
+//                [4, -3, 3, -2, 2, -1, 1, 0]]);
+
+function storeCatalogue (arrOfStr) {
+    let obj = [];
+    for (let str of arrOfStr) {
+        let [item, price] = str.split(" : ");
+        let firstLetter = item.slice(0,1);
+        if (obj.hasOwnProperty(firstLetter)) {
+            obj[firstLetter][item] = price;
+            continue;
+        }
+        obj[firstLetter] = {[item]:price}
+    }
+        let result = '';
+        let lettArr = Array.from(Object.keys(obj))
+                           .sort();
+
+        for (let l of lettArr) {
+
+            result += l + "\n";
+            Object.keys(obj[l])
+                  .sort()
+                  .forEach(k => result += `  ${k}: ${obj[l][k]}\n`);
+    }
+    console.log(result);
+}
+storeCatalogue([
+    "Appricot : 20.4",
+    "Anti-Bug Spray : 15",
+    "Fridge : 1500",
+    "TV : 1499",
+    "Deodorant : 10",
+    "Boiler : 300",
+    "Apple : 1.25",
+    "T-Shirt : 10"
+]);

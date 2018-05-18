@@ -123,4 +123,4 @@ function wordsToUppercase (words) {
     );
 }
 
-wordsToUppercase("Hi, how are you?")
+wordsToUppercase("Hi, how are you?");
