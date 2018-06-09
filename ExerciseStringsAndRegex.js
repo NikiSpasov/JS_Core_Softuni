@@ -10,26 +10,17 @@ function repeatStrNTimes(str, numToRepat) {
 
 //03. Starts With
 function checkForTheSubstr(mainstr, substr) {
+    mainstr.indexOf(substr) === 0 ? console.log("true")
+        : console.log("false")
 
-    console.log(checkIt());
-
-    function checkIt() {
-        if (mainstr.indexOf(substr) === 0) {
-            return true
-        }
-        return false
-    }
 }
+checkForTheSubstr("Asen", "A")
 
 //04. Ends With
 function checkForTheEnd(mainstr, substr) {
-
-    console.log(checkIt());
-
-    function checkIt() {
         let result = mainstr.length - substr.length;
-        mainstr.lastIndexOf(substr) === result ? true : false
-    }
+        mainstr.lastIndexOf(substr) === result ? console.log("true") :
+            console.log("false")
 }
 
 //05. Capitalize the Words
@@ -57,11 +48,11 @@ function findNums(arrStr) {
 }
 
 //7. Find Variable Names in Sentences
-function varNamesInSentence (str) {
+function varNamesInSentence(str) {
     let result = [];
     let regex = new RegExp(/_(\w+)/, 'g');
     let match = regex.exec(str);
-    while (match){
+    while (match) {
         result.push(match[1]);
         match = regex.exec(str);
     }
@@ -70,7 +61,7 @@ function varNamesInSentence (str) {
 }
 
 //08. Word Occurences
-function wordOccurences (strToCheck, word) {
+function wordOccurences(strToCheck, word) {
     let regex = new RegExp(`\\b${word}\\b`, "gi");
     try {
         let match = strToCheck.match(regex).length;
@@ -82,18 +73,19 @@ function wordOccurences (strToCheck, word) {
 }
 
 //09. Extract Links
-function extractLinks (arrStr) {
+function extractLinks(arrStr) {
     let regex = new RegExp(/www\.[0-9A-Za-z-]+\.[.a-z]+/, "g");
     let allText = arrStr.join(" ");
     let match = regex.exec(allText);
-    while (match){
+    while (match) {
         console.log(match[0]);
         match = regex.exec(allText);
     }
 }
+
 extractLinks([
     "Join WebStars now for free, at www.w%%^eb-stars.com",
     "You can also support our partners:",
-    ]);
+]);
 
-//
+//10. To-do

@@ -204,6 +204,50 @@ function uniqueSequence (arrs) {
             console.log(Array.from(myMap.get(k)))
         );
 }
+//8 - ver.2
+
+function printUniqueArrays(params) {
+    Set.prototype.containsArray = function (array) {
+        let matrix = [...this];
+
+        for (let i = 0; i < matrix.length; i++) {
+            if (matrix[i].length !== array.length) {
+                continue;
+            }
+
+            let areEqual = true;
+            for (let j = 0; j < matrix[i].length; j++) {
+                if (!matrix[i].includes(array[j])) {
+                    areEqual = false;
+                    break;
+                }
+            }
+
+            if (areEqual) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    let unique = new Set();
+
+    for (const row of params) {
+        let arr = JSON.parse(row);
+        if (!unique.containsArray(arr)) {
+            unique.add(arr);
+        }
+    }
+
+    console.log([...unique]
+        .sort((a, b) => a.length - b.length)
+        .map(a => a.sort((a, b) => b - a))
+        .map(a => `[${a.join(', ')}]`)
+        .join('\n')
+    );
+}
+
 uniqueSequence([
     [-3, -2, -1, 0, 1, 2, 3, 4],
     [10, 1, -17, 0, 2, 13],

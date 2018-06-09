@@ -296,4 +296,3 @@ function dnaHelix(number) {
         counter += 2
     }
 }
-dnaHelix(4)
