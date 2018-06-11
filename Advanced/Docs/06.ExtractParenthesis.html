@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="content">
+    Here is (Some sample) and it (has to be displayed) in the (browser);
+</p>
+<button id="text" onclick=displayText("content")>Here are the resuls:</button>
+<script>
+    function displayText(targetElementId) {
+        let allText = document.getElementById(targetElementId).textContent;
+        let result = "";
+        let parenthised = allText.match(/\((.*?)\)/gms);
+        for (let match of parenthised) {
+            result += match.slice(1, match.length - 1) + "; "
+        }
+        return result;
+        // let box = document.getElementById(targetElementId);
+        // box.innerText = result;
+    }
+</script>
+</body>
+</html>
