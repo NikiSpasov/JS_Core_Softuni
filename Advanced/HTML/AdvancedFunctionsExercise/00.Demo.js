@@ -1,25 +1,25 @@
 /* CALL, APPLY, BIND */
 //
-// let maria = {
-//     name: "Maria",
-//     age: 23,
-//     town: "Sofia",
-//     presentYourSelf:
-//         function (thingILike) {
-//         console.log(`I am ${this.name} from ${this.town} and i am ${this.age} years old and i like ${thingILike}`)}
-// };
-//
-// let ivan = {
-//     name: "Ivan",
-//     age: 28,
-//     town: "Pleven"
-// };
-//
-// maria.presentYourSelf("skiing");
-// //I am Maria from Sofia and i am 23 years old and i like skiing
-//
-// maria.presentYourSelf.call(ivan, "dating with nice girls"); //with call, we change the current this:
-// //I am Ivan from Pleven and i am 28 years old and i like dating with nice girls
+let maria = {
+    name: "Maria",
+    age: 23,
+    town: "Sofia",
+    presentYourSelf:
+        function (thingILike) {
+        console.log(`I am ${this.name} from ${this.town} and i am ${this.age} years old and i like ${thingILike}`)}
+};
+
+let ivan = {
+    name: "Ivan",
+    age: 28,
+    town: "Pleven"
+};
+
+maria.presentYourSelf("skiing");
+//I am Maria from Sofia and i am 23 years old and i like skiing
+
+maria.presentYourSelf.call(ivan, "dating with nice girls"); //with call, we change the current this:
+//I am Ivan from Pleven and i am 28 years old and i like dating with nice girls
 //
 // //apply - the same with call, but the second arg is ALWAYS an ARRAY:
 // maria.presentYourSelf.apply(ivan, ["f*** good..."])
@@ -53,18 +53,17 @@
 //Let's do the closure: (it is not necessary to be in a IIFE!)
 let cnt = function () {
     let result = 0;
-    return function (otherNum) { //this otherNum is argument for a()!!!
+    return function () { //this otherNum is argument for a()!!!
         console.log(++result); //this result is visible only here and it is static variable!
-        console.log(otherNum + result);
     }
 };
 let a = cnt();
 
-// //inner "result" is like static - class variable. It's state is preserved!
-// a(1);//1 2
-// a(2);//2 4
-// a(3);//3 6
-// a(4);//4 7, etc.
+//inner "result" is like static - class variable. It's state is preserved!
+a();//1
+a();//2
+a();//3
+a();//4
 //
 //
 // //!!!!!!!NB!!!!!! if you don't call trough other variable, it does not work!!!:
