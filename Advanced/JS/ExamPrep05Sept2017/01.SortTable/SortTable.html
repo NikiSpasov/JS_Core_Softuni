@@ -64,7 +64,29 @@
 
 <script>
     function sort(colIndex, descending) {
-        //TODO:
+        let table = $('#products');
+        let body = table.find('tbody');
+        let rows = body.find('tr').toArray();
+        let sorter = null;
+        if (colIndex === 0) {
+            sorter = (a, b) => {
+                a = $(a).find('td:nth-child(1)').text();
+                b = $(b).find('td:nth-child(1)').text();
+                return a.localeCompare(b);
+            };
+        } else if (colIndex === 1) {
+            sorter = (a, b) => {
+                a = Number($(a).find('td:nth-child(2)').text());
+                b = Number($(b).find('td:nth-child(2)').text());
+                return a - b;
+            }
+        }
+        rows.sort(sorter);
+        if (descending) {
+            rows.reverse();
+        }
+        console.log($(rows));
+        $(rows).each((i, e) => $(e).appendTo(body));
     }
 </script>
 
