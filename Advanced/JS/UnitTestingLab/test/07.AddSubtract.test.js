@@ -5,7 +5,7 @@ describe("createCalculator()", function () {
     let calc;
 
     beforeEach(function () {
-        calc = createCalculator();
+        calc = calculator();
     });
 
     it("should return 0 for get;", function () {

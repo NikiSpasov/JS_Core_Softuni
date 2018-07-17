@@ -16,4 +16,4 @@ function sumArray (arr, startIndex, endIndex) {
     }
 }
 
-console.log(sumArray("\"\"""", 0, 2));
+console.log(sumArray("\"\"", 0, 2));
