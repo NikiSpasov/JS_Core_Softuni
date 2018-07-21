@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../../Advanced/JS/ModulesLab/02.SortMap/template.js"],"names":["mapSort","result"],"mappings":"QAAsB,c,aAAlBA,O;;;AACJC,SAAOD,OAAP,GAAiBA,OAAjB","file":"template.js","sourcesContent":["let mapSort = require(\"./mapSort.js\");\r\nresult.mapSort = mapSort;"]}

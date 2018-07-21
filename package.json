@@ -1,0 +1,11 @@
+{
+  "name": "JS_Core_Softuni",
+  "version": "0.0.1",
+  "dependencies": {
+    "requirejs": "^2.3.5",
+    "systemjs": "^0.21.4"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-es2015-modules-amd": "^6.24.1"
+  }
+}
