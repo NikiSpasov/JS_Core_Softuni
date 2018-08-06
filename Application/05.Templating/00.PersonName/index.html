@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Handlebars</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+    <script src="./jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<script id="entry-template" type="text/x-handlebars-template">
+    <div class="entry">
+        {{#each contacts}}
+        <h1>{{ title }}</h1>
+        <div class="body">
+            {{#if body}}
+            <p>In the if</p>
+            {{else}}
+            <p>In the else</p>
+            {{/if}}
+            {{ body }}
+        </div>
+        {{/each}}
+        {{#if sunny}}
+        <p>In the if</p>
+        {{else}}
+        <p>In the else</p>
+        {{/if}}
+    </div>
+</script>
+<script>
+    (function () {
+        let container = document.getElementById('entry-template');
+        let source = container.innerHTML;
+        let template = Handlebars.compile(source);
+        let data = {
+            contacts: [
+            {
+                title: 'I am a title',
+                body: 'I am a body'
+            },
+            {
+                title: 'I am a title2',
+                body: 'I am a body2'
+            },
+            {
+                title: 'I am a title3',
+                body: 'I am a body3'
+            },
+            {
+                title: 'I am a title4',
+                body: 'I am a body4'
+            },
+            {
+                title: 'I am a title5',
+                body: 'I am a body5'
+            }
+        ]};
+        let innerHt = template(data);
+        $('body').append(innerHt);
+
+    })();
+</script>
+</body>
+</html>
