@@ -8,10 +8,9 @@ $(() => {
             const parentDiv = ($(ev.target).parent().parent());
             const container = ($(ev.target).parent());
             let imgElement = $(parentDiv).find('img');
-            let catId = imgElement.attr('src')
-                .split(/\D+/g)
-                .filter(p => p !== "")
-                .join("");
+
+            let catId = imgElement.attr('src').split(/\D+/g).filter(p => p !== "").join("");
+
             let currentCat = cats.filter(c => c.id === catId).map(function (cat) {
                 return {
                     id: cat.id,
