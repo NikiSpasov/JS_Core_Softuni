@@ -1,5 +1,5 @@
 function showView(viewName) {
-    $('')
+    $('');
     $('main > section').hide(); // Hide all views
     $('#' + viewName).show(); // Show the selected view only
 }

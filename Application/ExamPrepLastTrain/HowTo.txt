@@ -1,0 +1,113 @@
+0. Make directory "scripts"
+1. Put in scripts/remote.js and edit appKey and appSecret+
+2. Put in scripts/notify.js /and edit content/;
+3. Put in scripts/app.js and define paths with Sammy.js, make const handlers = {};
+4. Make dir "services" and put in "auth-service.js" -ready for using
+
+//FROM now on you have to choose Sammy / jQuerry with hide/show
+
+5. Make packaje.json file with right click on directory
+6. Open console from WS and
+"npm install jQuery handlebars sammy --save"
+7. Import your scripts
+8. Define Sammy and sammy-handlebars in app.js
+
+-----
+-----
+
+9. Make dir templates
+10. Make dir templates/common and create header.hbs and footer.hbs
+and import header and footer from index.html
+
+11. Edit the header.hbs like this:
+
+<li>
+ <a href="#">Editor</a>
+</li>
+
+to become:
+
+<li>
+  <a href="#/editor">Editor</a>
+</li>
+
+etc.
+
+12. Make
+templates/forms,
+templates/editor and
+template/receipt
+to store .hbs from index.html
+
+13. Make template for main page when you open the app with welcome.hbs in main
+template directory, then remove signIn and logIn forms from there and put them in forms directory like hbs forms
+
+14.Make partials for 13 forms in the main div from welcome:
+        {{> loginForm}}
+        {{> registerForm}}
+
+!!! 15. For every form we need ACTION and METHOD
+
+      - check names in the input fields, remove "-" in them if there any, and if you want - change them
+
+      - for login-form.hbs, inside int the form add action="#/login", method = "post":
+       <form action="#/login" method="post" id="login-form">
+
+       - for register-form.hbs:
+       <form action="#/register" method="post" id="register-form">
+
+16. Make scripts/handler, every handler will be responsible for one route;
+
+17. in app form app.js, add
+    this.get('index.html', ) - our site in this case is called index.html
+
+18. in handlers, make auth-handler
+
+19. check if in app.js on top there is "const handlers = {}", it is necessary  to work with
+auth-handler
+
+20. In the script references in html head, every handlers must be under the
+<script src="app.js"></script>
+<script src="./scripts/handlers/auth-handler.js"></script>
+
+21. In the auth-handler:
+
+handlers.getWelcomePage = function (ctx) { //this function accepts the context
+    ctx.loadPartials({    //first we define names for template, that are in the
+        //template and their paths
+        loginForm: './templates/forms/login-form.hbs',
+        registerForm: './templates/forms/register-form.hbs',
+        footer: './templates/common/footer.hbs'
+    }).then(function () { //becasue it retursn promise, then we engage the main template.
+        //the .partial() is tricky name, this is about the main ;)
+        this.partial('./templates/welcome.hbs')
+    })
+};
+
+22. Back in our app.js /from 17./:
+
+  this.get('index.html', handlers.getWelcomePage), so the context from the
+  get here will be sent to callback to .getWelcomePage
+
+23. Make '#/home' path with the same handler ina app.js
+
+24. add hadnlers.registerUser and validate data in it. Test it.
+
+//SO, the main 3 steps are:
+    1) make handler in handlers,
+    2) define path in app.js,
+    3) make services in services /if you need it/
+
+
+25. In order to work, the action of the form and method should be the same!!!:
+                   |                    |
+                   V                    V
+ <form action="#/entry/create" method="post" id="create-entry-form">
+ ...
+ ...
+
+should be always the same in the app:
+
+         |          |
+         V          V
+   this.post('#/entry/create', handlers.createEntry)

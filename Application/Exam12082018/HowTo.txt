@@ -1,0 +1,14 @@
+0. Make directory "scripts"
+1. Put in scripts/remote.js and edit appKey and appSecret+
+2. Put in scripts/notify.js /and edit content/;
+3. Put in scripts/app.js and define paths with Sammy.js, make const handlers = {};
+4. Make dir "services" and put in "auth-service.js" -ready for using
+
+//FROM now on you have to choose Sammy / jQuerry with hide/show
+
+5. Make packaje.json file with right click on directory
+6. Open console from WS and
+"npm install jQuery handlebars sammy --save"
+
+
+
